@@ -84,7 +84,7 @@ profit = 0
 power = True
 
 while power: #2.完成前一位使用者要求後重新詢問下一位
-    order = input("“What would you like? (espresso/latte/cappuccino): ") # 待辦事項1 : 1.查看使用者輸入指令決定下一步執行
+    order = input("What would you like? (espresso/latte/cappuccino): ") # 待辦事項1 : 1.查看使用者輸入指令決定下一步執行
     if order == "off": # 待辦事項2 : 使用 " off " 關閉咖啡機。輸入" off "後關閉咖啡機
         power = False
         print("Coffee closed")
@@ -94,7 +94,7 @@ Milk : {resources["milk"]} mL
 Coffee : {resources["coffee"]} g
 Money : $ {profit}""")
     else:
-        drink = menu[order]
+        drink = menu[order] #令 "drink" 為 "menu" 裡面的 "name"
         if check_ingredients_sufficient(drink["ingredients"]):
             payment = calculate_coins()
         if transaction_successful(payment, drink["cost"]):
