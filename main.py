@@ -1,13 +1,18 @@
-#主程式
-import sys
-sys.path.append("backup")
-import backup.point
-result=backup.point.distance(3,4)
-print("距離:", result)
-import backup.line
-result=backup.line.slope(1,1,3,3)
-print("斜率:", result)
-#封包別名
-import backup.line as line
-result=line.slope(1,1,3,3)
-print("斜率:", result)
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
+
+question_bank = []
+for i in question_data:
+    new_q = Question(i["text"], i["answer"])
+    question_bank.append(new_q)
+
+quiz = QuizBrain(question_bank)
+while quiz.still_has_questions():
+    quiz.next_question()
+
+print("You've completed the quiz.")
+print(f"You 're final score was: {quiz.score}/{quiz.question_number} ")
+
+
+
